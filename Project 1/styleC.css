@@ -1,0 +1,46 @@
+/* Defines Font Specification for all elements */
+* {
+    font-family: Tahoma, sans-serif;
+    font-size: 40px;
+}
+
+
+/* The animation code for transitioning from linear to radial gradient */
+@keyframes switchGradient {
+    from {background-image: linear-gradient(red, yellow);}
+    to {background-image: radial-gradient(circle, red, yellow, green);}
+}
+  
+/* Define specifications for all boxes*/
+div {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    min-height: 100px;
+    min-width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Use Linear Gradient */
+    background-image: linear-gradient(red, yellow);
+    margin-bottom: 0;
+    margin-top: 0;
+    /* Use animation with duration for switching infinitely */
+    animation-name: switchGradient;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    /* Create Transition on hover */
+    transition: width 2s, height 2s;
+    /* Create box-shadow */
+    box-shadow: 5px 5px;
+}
+
+/* Transition to a bigger box on hover */
+div:hover {
+    height: 200px;
+    width: 200px;
+}
+/* Remove space between boxes by reducing margin to 0 */
+p {
+    margin: 0;
+}

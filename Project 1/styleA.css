@@ -1,0 +1,50 @@
+/* Defines Font Specification for all elements */
+* {
+    font-family: Tahoma, sans-serif;
+    font-size: 40px;
+}
+
+
+/* Define specifications for all boxes */
+div {
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+    border-width: 1px 0px 0px 0px;
+    border-color: #687291;
+    text-align: center;
+    min-height: 100px;
+    min-width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Define classes for alternating box colors */
+.first {
+    background-color: #dfe1e7;
+}
+.second {
+    background-color: #eeeff2;
+}
+
+/* Define Specifications for final/bottom box */
+.final {
+    background-color: #687291;
+    border-color: black;
+    border: solid;
+    border-width: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Implement a flex box using the already existing body element*/
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 30px);
+}
+
+/* set margin to 0 the let the text appear at the top of the box */
+p {
+    margin: 0px;
+}

@@ -1,0 +1,44 @@
+/* Defines Font Specification for all elements */
+* {
+    font-family: Tahoma, sans-serif;
+    font-size: 40px;
+}
+
+/* Define specifications for all boxes with bg color, hieght, width and border. */
+div {
+    height: 150px;
+    width: 100px;
+    min-height: 150px;
+    min-width: 100px;
+    background-color: #eeeff2;
+    display: inline-block;
+    margin-right: 10px;
+    border: none;
+    border-left: 10px dotted #D0D0FF;
+}
+
+/* changes mouse to pointer and text color to yellow on hover*/
+div:hover {
+    cursor: pointer;
+    color: yellow;
+}
+
+/* Positions the final box at the bottom right */
+.final {
+    display: block;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    margin-bottom: 10px;
+}
+
+/* Implement a flex box using the already existing body element with minimal padding for style*/
+body {
+    display: flex;
+    padding: 3px;
+}
+/* Create margin between border and  top of the element*/
+p {
+    margin-left: 10px;
+    margin-top: 10px;
+}
