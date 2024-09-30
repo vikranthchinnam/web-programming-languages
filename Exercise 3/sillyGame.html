@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+    <link type="text/css" rel="stylesheet" id="dark-mode-general-link">
+    <style lang="en" type="text/css" id="dark-mode-custom-style"></style>
+    <style lang="en" type="text/css" id="dark-mode-native-style"></style>
+    <style lang="en" type="text/css" id="dark-mode-native-sheet"></style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Silly Game</title>
+        <style>
+        table{
+            border-collapse: collapse;
+        }
+        td {
+            border: 2px solid black;
+            padding: 5px;
+            text-align: center;
+            height: 18px;
+            width: 18px;
+        }
+        </style>
+    </head>
+    <body class="vsc-initialized">
+        <h1>Silly Game</h1>
+        <div>
+            <label for="rows">Enter #rows:</label>
+            <input type="text" name="rows" id="rows" value="2">
+            <br>
+            <label for="cols">Enter #cols:</label>
+            <input type="text" name="cols" id="cols" value="2" style="margin-left: 5px;">
+            <br>
+            <button style="margin-top: 5px;">Start a new game</button>
+        </div>
+
+        <script>
+            let startNewGameButton = document.querySelector("button");
+            let rows;
+            let cols;
+            let gameTable = null;
+            let cellCount = 0;
+            startNewGameButton.addEventListener("click", startGame);
+
+            function startGame(){
+                rows = + document.querySelector("#rows").value;
+                cols = + document.querySelector("#cols").value;
+                startNewGameButton.setAttribute("hidden", "");
+                if(gameTable !== null){
+                    document.body.removeChild(gameTable);
+                }
+                gameTable = document.createElement('table');
+                gameTable.style.marginTop = '20px';
+                gameTable.style.marginLeft = '10px';
+                cellCount = 0;
+                for(let i = 0; i < rows; i++){
+                    const tr = gameTable.insertRow();
+                    for(let j = 0; j < cols; j++){
+                        const td = tr.insertCell();
+                        cellCount++;
+                        td.appendChild(document.createTextNode(`${cellCount}`));
+                    }
+                }
+                gameTable.addEventListener("click", gameEnd);
+                document.body.appendChild(gameTable);
+            }
+
+            function gameEnd(event){
+                if(event.target!== gameTable && event.target.style.backgroundColor !== "orange"){
+                    event.target.style.backgroundColor = "orange";
+                    cellCount--;
+                }
+                if(cellCount==0){
+                    gameTable.querySelectorAll("td").forEach(cell => {
+                        cell.style.backgroundColor = "red";
+                    });
+                    gameTable.removeEventListener("click", gameEnd);
+                    startNewGameButton.removeAttribute("hidden");
+                }
+            }
+        </script>
+
+        <div id="hl-aria-live-message-container" aria-live="polite" class="visually-hidden"></div>
+        <div id="hl-aria-live-alert-container" role="alert" aria-live="assertive" class="visually-hidden"></div>
+    </body>
+    <style>
+        @media print {
+            #simplify-jobs-container {
+                display: none;
+            }
+        }
+    </style>
+    <div id="simplify-jobs-container" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: visible; z-index: 2147483647;"></div>
+    <script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script>
+</html>
